@@ -66,10 +66,6 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /opt/app-root/src
-            - name: log
-              mountPath: /var/log
-            - name: tmp
-              mountPath: /tmp
         {{- if .Values.route.oauth.enabled }}
         - name: oauth-proxy
           image: image-registry.openshift-image-registry.svc:5000/openshift/oauth-proxy:v4.4
@@ -113,10 +109,6 @@ spec:
             {{- toYaml . | nindent 12 }}
             {{- end }}
           {{- end }}
-        - name: tmp
-          emptyDir: {}
-        - name: log
-          emptyDir: {}
         {{- if .Values.route.oauth.enabled }}
         - name: proxy-svc-tls
           secret:
