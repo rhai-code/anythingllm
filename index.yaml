@@ -3,6 +3,16 @@ entries:
   anythingllm:
   - apiVersion: v2
     appVersion: 1.7.5
+    created: "2025-05-15T21:02:19.734085854Z"
+    description: A Helm chart to deploy AnythingLLM on OpenShift
+    digest: b828e3d58195e6c4a7f6ebd7f5742a54e19c2b1a85194eea6ad0cbf7b3494218
+    name: anythingllm
+    type: application
+    urls:
+    - https://github.com/rhai-code/anythingllm/releases/download/anythingllm-0.1.2/anythingllm-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.7.5
     created: "2025-05-15T20:57:45.575965844Z"
     description: A Helm chart to deploy AnythingLLM on OpenShift
     digest: f07ef205ef60a19437297eb58b4c9ed3769279d9d03a79e22f9e67ebb5fbdec7
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://github.com/rhai-code/anythingllm/releases/download/anythingllm-0.1.1/anythingllm-0.1.1.tgz
     version: 0.1.1
-generated: "2025-05-15T20:57:45.575970754Z"
+generated: "2025-05-15T21:02:19.73409963Z"
