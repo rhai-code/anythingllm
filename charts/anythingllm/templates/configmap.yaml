@@ -1,0 +1,26 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "anythingllm.fullname" . }}
+  labels:
+    {{- include "anythingllm.labels" . | nindent 4 }}
+data:
+  DISABLE_TELEMETRY: {{ quote .Values.configuration.disableTelemetry }}
+  LLM_PROVIDER: generic-openai
+  GENERIC_OPEN_AI_BASE_PATH: {{ quote .Values.configuration.vllmEndpoint }}
+  GENERIC_OPEN_AI_MODEL_PREF: {{ quote .Values.configuration.vllmModel }}
+  {{- range $k, $v := .Values.configuration.env }}
+  {{- if and (ne $k "LLM_PROVIDER") (and (ne $k "DISABLE_TELEMETRY") (and (ne $k "GENERIC_OPEN_AI_MODEL_PREF") (ne $k "GENERIC_OPEN_AI_BASE_PATH"))) }}
+  {{ $k }}: {{ quote $v }}
+  {{- end }}
+  {{- end }}
+{{- if .Values.route.oauth.enabled }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "anythingllm.fullname" . }}-ocp-injected-certs
+  labels:
+    config.openshift.io/inject-trusted-cabundle: "true"
+{{- end }}
